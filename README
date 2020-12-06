@@ -1,0 +1,49 @@
+# ThreeWordSequenceCounter
+
+ThreeWordSequenceCounter is Java Command Line application that counts every 3 word sequence in a text file and outputs
+the 100 most common sequences. The program uses Java's multi-threading capabilities to load data into a Queue in 1
+thread while reading from the Queue and populating a HashMap of each 3 word sequence in another thread. After all input
+has been processed, the top 100 values from the HashMap are printed to stdout in order from highest to 100th highest.
+
+If multiple files are passed to the application, they are processed in the order they were passed and the top 100
+sequences from each file are printed.
+
+## Installation
+
+Install by running the following commands from your Terminal (Note: Java JDK must be installed first to compile code)
+
+```
+cd *directory of source files*
+javac ThreeWordSequenceCounter.java
+```
+
+## Usage
+ThreeWordSequenceCounter can be run by passing in one or more filenames, reading input from a file passed through stdin,
+or manually entering text into the application.
+ 
+Examples:
+
+* Passing in filenames (All files must be in the same directory as the ThreeWordSequenceCounter application)
+```
+java ThreeWordSequenceCounter filename1.txt filename2.txt filename3.txt
+```
+* Reading from stdin
+```
+cat filename.txt | java ThreeWordSequenceCounter
+```
+* Manually entering text 
+```
+java ThreeWordSequenceCounter
+text line 1
+text line 2
+text line 3
+...
+text line n
+Ctrl+D to end input
+```
+
+## Known Issues
+* Text passed through stdin is ignored if a file is passed as an argument. Ex:
+```
+cat filename.txt | java ThreeWordSequenceCounter filename2.txt
+```
